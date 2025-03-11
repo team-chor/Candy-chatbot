@@ -5,7 +5,7 @@ from ChatBot import app
 
 # Function to fetch waifu image
 def get_waifu(tag):
-    api_url = f"https://waifu.codesearch.workers.dev/?tag={tag}"
+    api_url = f"https://waifu.codesearchdev.workers.dev/?tag={tag}"
     try:
         response = requests.get(api_url)
         if response.status_code == 200:
