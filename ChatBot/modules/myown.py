@@ -5,7 +5,7 @@ from ChatBot import app
 
 @app.on_message(filters.command("hug"))
 async def send_hug(client, message):
-    api_url = "https://myown.codesearch.workers.dev/hug"
+    api_url = "https://myown.codesearchdev.workers.dev/hug"
 
     try:
         response = requests.get(api_url).json()
@@ -27,7 +27,7 @@ async def send_hug(client, message):
 
 @app.on_message(filters.command("kiss"))
 async def send_kiss(client, message):
-    api_url = "https://myown.codesearch.workers.dev/kiss"
+    api_url = "https://myown.codesearchdev.workers.dev/kiss"
 
     try:
         response = requests.get(api_url).json()
