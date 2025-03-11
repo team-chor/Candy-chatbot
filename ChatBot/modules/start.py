@@ -10,7 +10,7 @@ from ChatBot import app
 from ChatBot.database import add_user, add_chat, get_fsub
 
 
-@app.on_message(filters.command(["start", "aistart"]) & ~filters.bot)
+@app.on_message(filters.command("start") & ~filters.bot)
 async def start(client, m: Message):
     if FSUB and not await get_fsub(client, m):
         return
@@ -51,6 +51,19 @@ I'm here to chat, vibe, and bring some fun to your day.
         await add_chat(chat_id, m.chat.title)
         await m.reply_text(f"Hey {m.from_user.mention}, I’m {bot_name}, here to keep the energy high. Use /help to see what I can do!")
 
+@app.on_chat_member_updated()
+async def chat_updates(client, m):
+    """
+    Jab bot kisi naye group me add ho, to uss group ka data database me store ho.
+    Aur agar bot group se remove ho jaye, to database se bhi delete ho.
+    """
+    if m.new_chat_member and m.new_chat_member.user.id == (await client.get_me()).id:
+        chat_id = m.chat.id
+        await add_chat(chat_id, m.chat.title)
+
+    elif m.left_chat_member and m.left_chat_member.user.id == (await client.get_me()).id:
+        chat_id = m.chat.id
+        await remove_chat(chat_id)
 
 @app.on_message(filters.command("help") & filters.group)
 async def help(client, m: Message):
