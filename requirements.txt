@@ -7,5 +7,4 @@ asyncio
 python-dotenv
 aiohttp
 cloudscraper
-flask
 git+https://github.com/KurimuzonAkuma/pyrogram
