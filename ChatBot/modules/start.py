@@ -1,11 +1,13 @@
 import asyncio
 import random
+
 from pyrogram import Client, filters
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.enums import ChatType
-from config import STICKER, FSUB
+
+from config import STICKER, FSUB, IMG
 from ChatBot import app
-from ChatBot.database import add_user, add_chat, remove_chat, get_fsub
+from ChatBot.database import add_user, add_chat, get_fsub
 
 
 @app.on_message(filters.command("start") & ~filters.bot)
@@ -25,38 +27,36 @@ async def start(client, m: Message):
             await asyncio.sleep(2)
             await umm.delete()
 
-        await m.reply_text(
-            f"""
+        await m.reply_photo(
+            photo=random.choice(IMG),
+            caption=f"""
 <b>Hey {m.from_user.mention}. 💖</b>  
 
-Welcome to <b>{bot_name}</b>, your cute and sassy chat buddy! ✨  
-I'm here to keep you entertained, tease you a little, and make sure you never feel lonely.  
+Welcome to <b>{bot_name}</b>. ✨  
+I'm here to chat, vibe, and bring some fun to your day.  
 
-<i>SassyVibes FunChat MagicMoments SnarkyReplies PlayfulChats SassyTalks </i> <a href='https://unitedcamps.in/Images/file_10516.jpg'>🦋</a>💖
+💌 Add me to your group for even more excitement.  
 """,
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton(text="🍷 ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ 🍷", url=f"https://t.me/{app.username}?startgroup=true")],
+                [InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ", url=f"https://t.me/{app.username}?startgroup=true")],
                 [
-                    InlineKeyboardButton(text="🫧 ᴄʜᴀɴɴᴇʟ 🫧", url="https://t.me/C0DE_SEARCH"),
-                    InlineKeyboardButton(text="🫧 sᴜᴘᴘᴏʀᴛ 🫧", url="https://t.me/AsuraaSupports")
+                    InlineKeyboardButton(text="ᴄʜᴀɴɴᴇʟ", url="https://t.me/C0DE_SEARCH"),
+                    InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="https://t.me/AsuraaSupports")
                 ],
-                [InlineKeyboardButton(text="📜 ᴍʏ ᴄᴏᴍᴍᴀɴᴅs 📜", callback_data="help")]
-            ]),
-            disable_web_page_preview=False,
-            reply_to_message_id=m.id
+                [InlineKeyboardButton(text="ᴍʏ ᴄᴏᴍᴍᴀɴᴅs", callback_data="help")]
+            ])
         )
-
     elif m.chat.type in {ChatType.GROUP, ChatType.SUPERGROUP}:
         chat_id = m.chat.id
         await add_chat(chat_id, m.chat.title)
-        await m.reply_text(
-            f"Hey {m.from_user.mention}, I’m {bot_name}, here to keep the energy high. Use /help to see what I can do.",
-            disable_web_page_preview=False
-        )
-
+        await m.reply_text(f"Hey {m.from_user.mention}, I’m {bot_name}, here to keep the energy high. Use /help to see what I can do!")
 
 @app.on_chat_member_updated()
 async def chat_updates(client, m):
+    """
+    When the bot is added to a new group, store its data in the database.
+    If the bot is removed from the group, delete its data from the database.
+    """
     bot_id = (await client.get_me()).id
 
     if m.new_chat_member and m.new_chat_member.user.id == bot_id:
@@ -67,15 +67,13 @@ async def chat_updates(client, m):
         chat_id = m.chat.id
         await remove_chat(chat_id)
 
-
 @app.on_message(filters.command("help") & filters.group)
 async def help(client, m: Message):
-    await m.reply_text(
+    await m.reply(
         "Need help? Click below to see all my commands.",
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("📜 ᴄᴏᴍᴍᴀɴᴅs ᴀɴᴅ ɢᴜɪᴅᴇ 📜", url="http://t.me/MissAaru_Robot?start=help")]
-        ]),
-        disable_web_page_preview=False
+            [InlineKeyboardButton("📜 ᴄᴏᴍᴍᴀɴᴅs ᴀɴᴅ ɢᴜɪᴅᴇ", url="http://t.me/MissAaru_Robot?start=help")]
+        ])
     )
 
 
@@ -88,46 +86,40 @@ async def callback(client, query: CallbackQuery):
             new_text = f"""
 <b>Hey {query.from_user.mention}. 💖</b>  
 
-Welcome to <b>{bot_name}</b>, your cute and sassy chat buddy! ✨  
-I'm here to keep you entertained, tease you a little, and make sure you never feel lonely.  
+Welcome to <b>{bot_name}</b>. ✨  
+I'm here to chat, vibe, and bring some fun to your day.  
 
-<i>SassyVibes FunChat MagicMoments SnarkyReplies PlayfulChats SassyTalks </i> <a href='https://unitedcamps.in/Images/file_10516.jpg'>🦋</a>💖
+💌 Add me to your group for even more excitement.  
 """
 
             if query.message.text != new_text:
                 await query.message.edit_text(
                     new_text,
                     reply_markup=InlineKeyboardMarkup([
-                        [InlineKeyboardButton(text="🍷ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ🍷", url="https://t.me/MissAaru_Robot?startgroup=true")],
+                        [InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ", url="https://t.me/MissAaru_Robot?startgroup=true")],
                         [
-                            InlineKeyboardButton(text="🫧ᴄʜᴀɴɴᴇʟ🫧", url="https://t.me/C0DE_SEARCH"),
-                            InlineKeyboardButton(text="🫧sᴜᴘᴘᴏʀᴛ🫧", url="https://t.me/AsuraaSupports")
+                            InlineKeyboardButton(text="ᴄʜᴀɴɴᴇʟ", url="https://t.me/C0DE_SEARCH"),
+                            InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="https://t.me/AsuraaSupports")
                         ],
-                        [InlineKeyboardButton(text="📜 ᴍʏ ᴄᴏᴍᴍᴀɴᴅs 📜", callback_data="help")]
-                    ]),
-                    disable_web_page_preview=False
+                        [InlineKeyboardButton(text="ᴍʏ ᴄᴏᴍᴍᴀɴᴅs", callback_data="help")]
+                    ])
                 )
 
     elif query.data == "help":
         if query.message.chat.type == ChatType.PRIVATE:
             help_message = f"""
-<b><blockquote>❖ Aaru’s Magic Tricks. 💫</blockquote></b>  
-⬤ /start ➥ Start our chat, baby. 🌟
-⬤ /ping ➥ Check if I'm awake. 🔔
-⬤ /draw ➥ Let’s get artsy, I’ll draw your imagination. 🎨
-⬤ /ask ➥ Provide me with a query to ask Aaru AI. 😋
-⬤ /stats ➥ Get group and user stats. 📊
-⬤ /chatbot ➥ Toggle my AI replies in groups. 🤖
-⬤ /song ➥ Name the track, and I’ll deliver the magic. 🎶
-⬤ /sticker ➥ Searching for a sticker pack? Drop a name, and I'll find it for you. 🖼️ 
+❖ Available Commands.
+
+⬤ /start ➥ Start me.  
+⬤ /ping ➥ Check if I'm online.  
+⬤ /stats ➥ Get chat stats.  
+⬤ /chatbot ➥ Toggle AI replies (only works in groups). 
+⬤ /ask ➥ Provide me with a query to ask Aaru AI. 💖
 ⬤ /kiss ➥ Get a virtual kiss from me. 😘  
 ⬤ /hug ➥ Let me wrap you in a warm hug. 🤗 
 ⬤ /waifu ➥ Want a cute waifu image? Just drop a tag, and I'll fetch one for you. 💕
-⬤ /horny ➥ Reply to an image to get a horny card. 💖
-⬤ /anime ➥ Reply to an image, and I'll turn it into an anime-style masterpiece. 🎨✨
-⬤ /repo ➥ Get the Aaru ChatBot source code instantly! Tap the link below. 📂✨
 
-<i><blockquote>More coming soon... I keep getting better. ✨</blockquote></i>  
+Stay sharp, stay awesome. ✨  
 """
 
             if query.message.text != help_message:
@@ -135,9 +127,8 @@ I'm here to keep you entertained, tease you a little, and make sure you never fe
                     help_message,
                     reply_markup=InlineKeyboardMarkup([
                         [
-                            InlineKeyboardButton(text="🫧ʙᴀᴄᴋ🫧", callback_data="start"),
-                            InlineKeyboardButton(text="🫧ᴄʜᴀɴɴᴇʟ🫧", url="https://t.me/C0DE_SEARCH")
+                            InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="start"),
+                            InlineKeyboardButton(text="ᴄʜᴀɴɴᴇʟ", url="https://t.me/C0DE_SEARCH")
                         ]
-                    ]),
-                    disable_web_page_preview=False
+                    ])
                 )
