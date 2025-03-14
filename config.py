@@ -11,7 +11,7 @@ MONGO_URL = getenv("MONGO_URL", None)
 AUTH_CHANNEL = int(getenv("AUTH_CHANNEL", None))
 FSUB = getenv("FSUB", False)
 OWNER_ID = int(getenv("OWNER_ID", None))
-
+WEB_APP = getenv("WEB_APP", False) 
 
 
 STICKER = [
