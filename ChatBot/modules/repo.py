@@ -12,7 +12,7 @@ If you want my bot repo, click below to get the source code.
 
 Powered by @CodeSearchDev ✨""",
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/AsuraaSupports"),
+            [InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/ChatWithDevRobot"),
              InlineKeyboardButton("ʀᴇᴘᴏ", url="https://github.com/CodeSearchDev/AaruChatBot")]
         ])
     )
