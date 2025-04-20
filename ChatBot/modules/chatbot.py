@@ -4,8 +4,8 @@ from pyrogram.types import Message
 from pyrogram.enums import ChatAction
 
 from ChatBot import app
-from ChatBot.database import is_chatbot_enabled, enable_chatbot, disable_chatbot, chatbot_api
-from ChatBot.utils import is_admins
+from ChatBot.database import is_chatbot_enabled, enable_chatbot, disable_chatbot, chatbot_api, is_admins
+
 
 async def text_filter(_, __, m: Message):
     return (
