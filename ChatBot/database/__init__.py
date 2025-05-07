@@ -13,3 +13,6 @@ from .admin import *
 from .fsub import *
 from .aaru import *
 from .chatbot import *
+from ChatBot.aaru_gemini import AaruGemini
+
+chatbot_api = AaruGemini(api_key="AIzaSyCmZYuxe4JeEbGURuJa6jPoQNvt677tp0E")
