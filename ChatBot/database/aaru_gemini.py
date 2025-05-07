@@ -1,5 +1,7 @@
 import google.generativeai as genai
+from ChatBot.aaru_gemini import AaruGemini
 
+chatbot_api = AaruGemini(api_key="YOUR_GEMINI_API_KEY")  # Replace with your real key
 class AaruGemini:
     SYSTEM_PROMPT = (
         "You are Aaru, an AI girlfriend..."
