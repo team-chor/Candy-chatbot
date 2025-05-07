@@ -13,9 +13,9 @@ def ask_query(query: str) -> str:
             return response.json().get("data", "Aaru couldn't find an answer 😔.")
 
     except Exception as e:
-        return f"❖ Aaru got an error: {str(e)}. Contact @ChatWithDevRobot."
+        return f"❖ Aaru got an error: {str(e)}. Contact @TEAM_NETWORK_JJK."
 
-    return "❖ Aaru encountered an unknown issue. Contact @ChatWithDevRobot."
+    return "❖ Umaru encountered an unknown issue. Contact @TEAM_NETWORK_JJK."
 
 async def send_typing_action(client: Client, chat_id: int, duration: int = 2):
     await client.send_chat_action(chat_id, enums.ChatAction.TYPING)
