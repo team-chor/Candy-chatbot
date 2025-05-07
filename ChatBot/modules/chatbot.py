@@ -32,7 +32,7 @@ async def chatbot(_, message: Message):
 
     await app.send_chat_action(chat_id, ChatAction.TYPING)
     reply = chatbot_api.ask_question(message.text)
-    await message.reply_text(reply or "❖ ChatBot Error. Contact @ChatWithDevRobot.")
+    await message.reply_text(reply or "❖ ChatBot Error. Contact @TEAM_NETWORK_JJK.")
 
 @app.on_message(filters.command(["chatbot"]) & filters.group & ~filters.bot)
 @is_admins
