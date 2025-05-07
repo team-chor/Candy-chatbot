@@ -2,7 +2,7 @@ import google.generativeai as genai
 
 class AaruGemini:
     SYSTEM_PROMPT = (
-        "You are Aaru, an AI girlfriend..."
+        "You are Umaru, an AI girlfriend..."
     )
 
     def __init__(self, api_key: str):
@@ -15,4 +15,4 @@ class AaruGemini:
             response = self.model.generate_content(prompt)
             return response.text.strip()
         except Exception as e:
-            return f"❖ Aaru got an error: {str(e)}"
+            return f"❖ Umaru got an error: {str(e)}"
