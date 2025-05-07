@@ -18,7 +18,9 @@ LOGGER = logging.getLogger("ChatBot")
 db = AsyncIOMotorClient(config.MONGO_URL).Anonymous
 START_TIME = time.time()
 
+from ChatBot.aaru_gemini import AaruGemini
 
+chatbot_api = AaruGemini(api_key="AIzaSyCmZYuxe4JeEbGURuJa6jPoQNvt677tp0E")  # Replace with your real key
 class Bot(Client):
     def __init__(self):
         super().__init__(
