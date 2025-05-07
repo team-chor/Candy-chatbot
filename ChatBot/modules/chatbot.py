@@ -6,11 +6,9 @@ from pyrogram.enums import ChatAction
 from ChatBot import app
 from ChatBot.database import is_chatbot_enabled, enable_chatbot, disable_chatbot, chatbot_api, is_admins
 
-
 async def text_filter(_, __, m: Message):
     return (
         bool(m.text)
-        and len(m.text) <= 69
         and not m.text.startswith(("!", "/"))
         and (not m.reply_to_message or m.reply_to_message.reply_to_message_id == m._client.me.id)
         and not (m.mentioned and (m.text.startswith("!") or m.text.startswith("/")))
