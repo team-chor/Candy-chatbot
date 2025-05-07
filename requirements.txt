@@ -8,4 +8,5 @@ python-dotenv
 aiohttp
 cloudscraper
 flask
+google-generativeai
 git+https://github.com/KurimuzonAkuma/pyrogram
