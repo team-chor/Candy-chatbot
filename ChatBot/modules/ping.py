@@ -23,7 +23,7 @@ async def ping(client, message: Message):
         reply_markup=InlineKeyboardMarkup([
             [
                 InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ", url=f"https://t.me/{app.username}?startgroup"),
-                InlineKeyboardButton(text="ᴜᴘᴅᴀᴛᴇ", url="https://t.me/CodeSearchDev"),
+                InlineKeyboardButton(text="ᴜᴘᴅᴀᴛᴇ", url="https://t.me/TEAM_NETWORK_JJK"),
             ]
         ]),
     )
