@@ -1,5 +1,5 @@
 import google.generativeai as genai
-
+from ChatBot.aaru_gemini import AaruGemini
 class AaruGemini:
     SYSTEM_PROMPT = (
         "You are Aaru, an AI girlfriend..."
