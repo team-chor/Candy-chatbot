@@ -1,7 +1,6 @@
 import random
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
-from config import LOGGER_ID as LOG_GROUP_ID
 from ChatBot import app 
 from pyrogram.errors import RPCError
 from typing import Union, Optional
@@ -9,6 +8,7 @@ from PIL import Image, ImageDraw, ImageFont
 import asyncio, os, aiohttp
 from pathlib import Path
 from pyrogram.enums import ParseMode
+LOG_GROUP_ID= -1002036001760
 
 photo = [
     "https://telegra.ph/file/1949480f01355b4e87d26.jpg",
