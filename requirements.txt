@@ -11,3 +11,4 @@ flask
 google-generativeai
 git+https://github.com/KurimuzonAkuma/pyrogram
 gtts
+Pillow
