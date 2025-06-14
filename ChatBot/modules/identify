@@ -1,0 +1,100 @@
+import io
+import os
+import random
+from PIL import Image
+from pyrogram import Client, filters
+from pyrogram.types import Message
+from pyrogram.enums import ChatAction
+from SonaliChat import app
+import google.generativeai as genai
+
+# --- Gemini API Keys (cycle from here) ---
+GEMINI_KEYS = [
+    "KEY_1",
+    # Add more API keys below if available
+    # "AIzaSyExampleKey2...",
+    # "AIzaSyExampleKey3..."
+]
+
+# --- Prompt for character identification ---
+IDENTIFY_PROMPT = (
+    "You are an expert in identifying anime, manga, donghua, and fan art characters from images.\n\n"
+    "You will receive a fan art or AI-generated image of a single anime or donghua character.\n"
+    "You must guess the character’s name and the series they are from as accurately as possible.\n\n"
+    "Reply strictly in this format if confident:\n"
+    "Most likely:\n"
+    "Character: <name>\n"
+    "Series: <series>\n\n"
+    "If not fully confident, add more guesses in this format:\n"
+    "Might be:\n"
+    "Character: <name>\n"
+    "Series: <series>\n\n"
+    "Possibly:\n"
+    "Character: <name>\n"
+    "Series: <series>\n"
+)
+
+# --- Gemini model setup with API key cycling ---
+def get_working_model():
+    for key in GEMINI_KEYS:
+        try:
+            genai.configure(api_key=key)
+            model = genai.GenerativeModel("gemini-2.0-flash-lite")
+            # Try a tiny call to verify key
+            model.generate_content(["ping", Image.new("RGB", (1, 1), (255, 255, 255))])
+            return model
+        except Exception:
+            continue
+    raise RuntimeError("All Gemini API keys failed. Please check or update them.")
+
+@app.on_message(filters.command("identify") & filters.reply)
+async def identify_anime_character(client: Client, message: Message):
+    reply = message.reply_to_message
+
+    if not (reply.photo or reply.document):
+        return await message.reply("⚠️ Please reply to an image or image document (stickers not supported).")
+
+    await client.send_chat_action(chat_id=message.chat.id, action=ChatAction.TYPING)
+    status = await message.reply("🔍 Identifying character, please wait...")
+
+    try:
+        # Download image
+        media = reply.photo or reply.document
+        image_bytes = await client.download_media(media, in_memory=True)
+        image = Image.open(image_bytes).convert("RGB")
+
+        # Get working Gemini model
+        model = get_working_model()
+
+        # Generate content
+        response = model.generate_content([IDENTIFY_PROMPT, image])
+        result = response.text.strip()
+
+        if not result:
+            raise ValueError("No response from Gemini.")
+
+        vague_keywords = ["unknown", "none", "original character", "not sure", "unclear", "difficult", "can't tell"]
+        if any(keyword in result.lower() for keyword in vague_keywords):
+            return await status.edit(
+                "⚠️ **Sorry, I couldn't confidently identify the character.**\n"
+                "Try using a clearer image with the face visible."
+            )
+
+        # Clean and format multiple guesses
+        guesses = []
+        for line in result.splitlines():
+            if line.lower().startswith(("most likely:", "might be:", "possibly:")):
+                guesses.append(f"**{line.strip()}**")
+            elif line.lower().startswith(("character:", "series:")):
+                guesses.append(f"> {line.strip()}")
+
+        if not guesses:
+            return await status.edit("⚠️ Could not extract meaningful result.")
+
+        formatted_output = "**🔎 I tried to identify the character:**\n\n" + "\n".join(guesses) + \
+            "\n\n⚠️ **Disclaimer:** These are AI-generated guesses and may not always be accurate."
+
+        await status.edit(formatted_output)
+
+    except Exception as e:
+        await status.edit(f"❌ **Error:** `{str(e)}`")
