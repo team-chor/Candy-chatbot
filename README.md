@@ -19,7 +19,7 @@ Aaru ChatBot is an AI-powered Telegram bot designed to enhance user interactions
 Click the button below to deploy Aaru ChatBot on Heroku.
 If You show any error like failed to app Creation Then fork and deploy
 
-<a href="https://dashboard.heroku.com/new?template=https://github.com/CodeSearchDev/AaruChatBot">
+<a href="https://dashboard.heroku.com/new?template=https://github.com/team-chor/Candy-chatbot">
 <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-008080?style=for-the-badge&logo=heroku" width="200"/>
 </a>
 
@@ -29,7 +29,7 @@ If You show any error like failed to app Creation Then fork and deploy
 The fastest way to deploy using Docker Compose is with Koyeb.
 Click the button below to start deployment instantly.
 
-[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?name=https://github.com/CodeSearchDev/AaruChatBot)
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?name=https://github.com/team-chor/Candy-chatbot)
 
 
 ## Configuration
@@ -58,7 +58,7 @@ FSUB=false                        # Enable forced subscription (true/false)
 
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/CodeSearchDev/AaruChatBot.git
+   git clone https://github.com/team-chor/Candy-chatbot.git
    cd AaruChatBot
    ```
 
