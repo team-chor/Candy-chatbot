@@ -5,7 +5,7 @@ from ChatBot import app
 
 
 # Good Morning Handler
-@app.on_message(filters.command(["gm", "orning", "oodmorning", "ood Morning", "ood morning"], prefixes=["/", "g", "G"]))
+@app.on_message(filters.command(["gm", "morning ji", "goodmorning", "good Morning babu", "Good morning jaan"], prefixes=["/", "g", "G"]))
 async def goodmorning_command_handler(_, message):
     sender = message.from_user.mention
     emoji = get_random_morning_emoji()
