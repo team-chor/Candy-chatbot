@@ -13,6 +13,6 @@ If you want my bot repo, click below to get the source code.
 Powered by @TEAM_CHOR ✨""",
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/TEAM_CHOR"),
-             InlineKeyboardButton("ʀᴇᴘᴏ", url="https://t.me/TEAM_VIP")]
+             InlineKeyboardButton("ʀᴇᴘᴏ", url="https://t.me/TEAM_VIP_01")]
         ])
     )
