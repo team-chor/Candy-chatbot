@@ -10,9 +10,9 @@ async def start(_, msg):
 
 If you want my bot repo, click below to get the source code.
 
-Powered by @TEAM_NETWORK_JJK ✨""",
+Powered by @TEAM_CHOR ✨""",
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/TEAM_NETWORK_JJK"),
-             InlineKeyboardButton("ʀᴇᴘᴏ", url="https://t.me/TEAM_JJK")]
+            [InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/TEAM_CHOR"),
+             InlineKeyboardButton("ʀᴇᴘᴏ", url="https://t.me/TEAM_VIP")]
         ])
     )
