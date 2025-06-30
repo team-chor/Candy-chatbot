@@ -4,7 +4,7 @@ import random
 from ChatBot import app
 
 
-@app.on_message(filters.command(["gn","n","oodnight","ood Night","ood night"], prefixes=["/","g","G"]))
+@app.on_message(filters.command(["gn","n","goodnight","good Night","good night"], prefixes=["/","g","G"]))
 async def goodnight_command_handler(_, message):
     sender = message.from_user.mention
     emoji = get_random_emoji()
