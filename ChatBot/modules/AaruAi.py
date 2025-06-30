@@ -10,12 +10,12 @@ def ask_query(query: str) -> str:
         response = requests.get(url)
 
         if response.status_code == 200:
-            return response.json().get("data", "Aaru couldn't find an answer 😔.")
+            return response.json().get("data", "Candy couldn't find an answer 😔.")
 
     except Exception as e:
-        return f"❖ Aaru got an error: {str(e)}. Contact @TEAM_NETWORK_JJK."
+        return f"❖ Aaru got an error: {str(e)}. Contact @TEAM_CHOR."
 
-    return "❖ Umaru encountered an unknown issue. Contact @TEAM_NETWORK_JJK."
+    return "❖ Umaru encountered an unknown issue. Contact @TEAM_CHOR."
 
 async def send_typing_action(client: Client, chat_id: int, duration: int = 2):
     await client.send_chat_action(chat_id, enums.ChatAction.TYPING)
