@@ -13,7 +13,7 @@
       "url": "heroku/python"
     }
   ],
-  "repository": "https://github.com/CodeSearchDev/AaruChatBot",
+  "repository": "https://github.com/team-chor/Candy-chatbot",
   "env": {
     "API_ID": {
       "description": "Get this value from my.telegram.org/apps.",
