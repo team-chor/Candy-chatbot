@@ -90,7 +90,7 @@ Contributions are welcome. To contribute:
 This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
-<a href="https://t.me/CodeSearchDev">
+<a href="https://t.me/TEAM_CHOR">
     <img title="Telegram" src="https://img.shields.io/badge/Telegram-%23000000.svg?&style=for-the-badge&logo=telegram&logoColor=61DAFB">
 </a>
 <a href="https://instagram.com/CodeSearchDev">
