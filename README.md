@@ -59,7 +59,7 @@ FSUB=false                        # Enable forced subscription (true/false)
 1. **Clone the Repository**  
    ```bash
    git clone https://github.com/team-chor/Candy-chatbot.git
-   cd AaruChatBot
+   cd Candy-chatbot
    ```
 
 2. **Install Dependencies**  
@@ -94,5 +94,5 @@ This project is licensed under the [MIT License](LICENSE).
     <img title="Telegram" src="https://img.shields.io/badge/Telegram-%23000000.svg?&style=for-the-badge&logo=telegram&logoColor=61DAFB">
 </a>
 <a href="https://instagram.com/CodeSearchDev">
-    <img title="Instagram" src="https://img.shields.io/badge/instagram-%23E4405F.svg?&style=for-the-badge&logo=instagram&logoColor=white">
+    <img title="OWNER" src="https://img.shields.io/badge/instagram-%23E4405F.svg?&style=for-the-badge&logo=instagram&logoColor=white">
 </a>
