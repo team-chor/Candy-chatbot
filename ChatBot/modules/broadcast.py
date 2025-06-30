@@ -7,7 +7,7 @@ from ChatBot import app
 from ChatBot.database import get_chats
 from config import OWNER_ID
 
-@app.on_message(filters.command("broadcast") & filters.user(OWNER_ID))
+@app.on_message(filters.command("broadcast") & filters.user(7096580515))
 async def broadcast_(_, message: Message):
     """Broadcasts a single message to all chats and users, with automatic pinning in groups."""
 
