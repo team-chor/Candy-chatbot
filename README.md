@@ -93,6 +93,6 @@ This project is licensed under the [MIT License](LICENSE).
 <a href="https://t.me/TEAM_CHOR">
     <img title="Telegram" src="https://img.shields.io/badge/Telegram-%23000000.svg?&style=for-the-badge&logo=telegram&logoColor=61DAFB">
 </a>
-<a href="https://instagram.com/CodeSearchDev">
+<a href="https://instagram.com/mr_vipin_2029">
     <img title="OWNER" src="https://img.shields.io/badge/instagram-%23E4405F.svg?&style=for-the-badge&logo=instagram&logoColor=white">
 </a>
