@@ -36,6 +36,6 @@ IMG = [
 "https://files.catbox.moe/xubani.jpg",
 "https://files.catbox.moe/h22f6k.jpg",
 "https://files.catbox.moe/nbklw4.jpg",
-"https://files.catbox.moe/0mpi0w.jpg",
+"https://files.catbox.moe/ssyv05.webp",
 "https://files.catbox.moe/jnmurs.jpg",
 ]
