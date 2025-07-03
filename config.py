@@ -34,7 +34,7 @@ STICKER = [
 IMG = [
 "https://files.catbox.moe/w7tj1a.jpg",
 "https://files.catbox.moe/xubani.jpg",
-"https://files.catbox.moe/q4o6l9.jpg",
+"https://files.catbox.moe/h22f6k.jpg",
 "https://files.catbox.moe/q4o6l9.jpg",
 "https://files.catbox.moe/0mpi0w.jpg",
 "https://files.catbox.moe/jnmurs.jpg",
